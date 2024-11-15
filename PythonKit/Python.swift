@@ -627,8 +627,8 @@ public extension PythonObject {
     @discardableResult
     func dynamicallyCall(
         withKeywordArguments args:
-        KeyValuePairs<String, PythonConvertible> = [:]) -> PythonObject {
-        return try! throwing.dynamicallyCall(withKeywordArguments: args)
+        KeyValuePairs<String, PythonConvertible> = [:])throws -> PythonObject {
+        return try throwing.dynamicallyCall(withKeywordArguments: args)
     }
 
     /// Alias for the function above that lets the caller dynamically construct the argument list, without using a dictionary literal.
@@ -1932,3 +1932,4 @@ extension PythonClass : PythonConvertible {
         typeObject
     }
 }
+

@@ -142,17 +142,17 @@ where Element : NumpyScalarCompatible {
     }
 }
 
-public extension Array where Element : NumpyScalarCompatible {
-    /// Creates a 1-D `numpy.ndarray` instance with the same scalars as this
-    /// `Array`.
-    ///
-    /// - Precondition: The `numpy` Python package must be installed.
-    func makeNumpyArray() -> PythonObject {
-        return withUnsafeBytes { bytes in
-            let data = ctypes.cast(Int(bitPattern: bytes.baseAddress),
-                                   ctypes.POINTER(Element.ctype))
-            let ndarray = np.ctypeslib.as_array(data, shape: PythonObject(tupleOf: count))
-            return np.copy(ndarray)
-        }
-    }
-}
+//public extension Array where Element : NumpyScalarCompatible {
+//    /// Creates a 1-D `numpy.ndarray` instance with the same scalars as this
+//    /// `Array`.
+//    ///
+//    /// - Precondition: The `numpy` Python package must be installed.
+//    func makeNumpyArray() -> PythonObject {
+//        return withUnsafeBytes { bytes in
+//            let data = ctypes.cast(Int(bitPattern: bytes.baseAddress),
+//                                   ctypes.POINTER(Element.ctype))
+//            let ndarray = np.ctypeslib.as_array(data, shape: PythonObject(tupleOf: count))
+//            return np.copy(ndarray)
+//        }
+//    }
+//}
